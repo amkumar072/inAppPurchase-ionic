@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "inAppPurchase-ionic",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
