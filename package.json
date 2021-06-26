@@ -9,7 +9,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:ionic": "ionic serve",
+    "add": "npx cap add android",
+    "sync": "npx cap sync",
+    "open": "npx cap open android",
+    "run:android": "ionic build --prod && npm run sync && npm run open"
   },
   "private": true,
   "dependencies": {
@@ -19,12 +24,16 @@
     "@angular/platform-browser": "~12.0.1",
     "@angular/platform-browser-dynamic": "~12.0.1",
     "@angular/router": "~12.0.1",
+    "@capacitor/android": "^3.0.2",
     "@capacitor/app": "1.0.2",
     "@capacitor/core": "3.0.2",
     "@capacitor/haptics": "1.0.2",
     "@capacitor/keyboard": "1.0.2",
     "@capacitor/status-bar": "1.0.2",
+    "@ionic-native/core": "^5.33.1",
+    "@ionic-native/in-app-purchase-2": "^5.33.1",
     "@ionic/angular": "^5.5.2",
+    "cordova-plugin-purchase": "^10.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
