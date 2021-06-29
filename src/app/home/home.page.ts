@@ -28,6 +28,10 @@ export class HomePage {
       this.store.ready(() => {
         this.products = this.store.products;
         this.ref.detectChanges();
+
+
+        console.log('log products' + JSON.stringify(this.products));
+
       });
     });
   }
