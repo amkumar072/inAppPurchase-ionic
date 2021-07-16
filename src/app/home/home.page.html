@@ -1,25 +1,55 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Devdactic IAP
+      IAP
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item button *ngFor="let p of products" (click)="purchase(p)" detail="false">
-      <ion-label class="ion-text-wrap">
-        {{ p.title }}
-        <p>{{ p.description }}</p>
-      </ion-label>
-      <ion-button slot="end">
-        {{ p.price }} {{ p.currency }}
-      </ion-button>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-header>
+      <ion-label>Products </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let p of products">
+        <ion-item button *ngIf="p.type!=='paid subscription'" (click)="purchase(p)" detail="false"
+          class="ion-no-padding">
+          <ion-label class="ion-text-wrap">
+            {{ p.title }}
+            <p>{{ p.description }}</p>
+          </ion-label>
+          <ion-button slot="end">
+            {{ p.price }} {{ p.currency }}
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-button expand="full" (click)="restore()">Restore</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-label>Subscription </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let p of products">
+        <ion-item button *ngIf="p.type==='paid subscription'" (click)="purchase(p)" detail="false"
+          class="ion-no-padding">
+          <ion-label class="ion-text-wrap">
+            {{ p.title }}
+            <p>{{ p.description }}</p>
+          </ion-label>
+          <ion-button slot="end">
+            {{ p.price }} {{ p.currency }}
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-button expand="full" (click)="restore()">refresh</ion-button>
 
   <ion-item>
     Gems: {{ gems }}

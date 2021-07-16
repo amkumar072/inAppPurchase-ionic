@@ -4,12 +4,19 @@ import { Platform, AlertController } from '@ionic/angular';
 
 const PRODUCT_GEMS_KEY = 'devgems100';
 const PRODUCT_PRO_KEY = 'devpro';
+const SUB = 'pdsub';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  productLocalName: string[] = [
+    'devgems100',
+    'devpro'
+  ];
 
   gems = 0;
   isPro = false;
@@ -37,17 +44,22 @@ export class HomePage {
   }
 
   registerProducts() {
-    this.store.register({
-      id: PRODUCT_GEMS_KEY,
-      type: this.store.CONSUMABLE,
+    this.productLocalName.map(prodName => {
+      this.store.register({
+        id: prodName,
+        type: this.store.CONSUMABLE,
+      });
     });
-
-    this.store.register({
-      id: PRODUCT_PRO_KEY,
-      type: this.store.NON_CONSUMABLE,
-    });
+    this.registerSubscription();
 
     this.store.refresh();
+  }
+
+  registerSubscription() {
+    this.store.register({
+      id: SUB,
+      type: this.store.PAID_SUBSCRIPTION
+    });
   }
 
   setupListeners() {
